@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Blog;
+use App\Models\User;
 
-class BlogController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs=Blog::get();
-        return view('Dashbord.blog.index',compact('blogs'));
+        $Users=User::get();
+        return view('Dashbord.User.index',compact('Users'));
     }
 
     /**
@@ -26,7 +26,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('Dashbord.blog.create');
+        return view('Dashbord.User.create');
     }
 
     /**
@@ -37,19 +37,31 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
+    $validated = $request->validate([
+            'email'=>'unique:users',
+            
+            'password' => 'required|confirmed|min:6',
+
+        ]);
+
+
         if($request->img)
         {
            $img=time(). '.' .$request->img->extension();
-           $request->img->move(public_path('BLog'),$img);
+           $request->img->move(public_path('User'),$img);
         }
         
-        $games=Blog::create([
-            'title'=>$request['title'],
-            'content'=>$request['content'],
+        $games=User::create([
+            'name'=>$request['name'],
+            'email'=>$request['email'],
             'img'=>$img,
-            'link'=>$request['link'],
+            'password'=>$request['password'],
          ]);
-        return redirect()->route('blog.index')->with('success','تم اضافه المقال بنجاح');
+         
+        return redirect()->route('user.index')->with('success','تم اضافه العضو بنجاح');
     }
 
     /**
@@ -60,8 +72,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $blog=Blog::find($id);
-        return view('Dashbord.blog.show',compact('blog'));
+        $user=User::find($id);
+        return view('Dashbord.User.show',compact('user'));
     }
 
     /**
@@ -72,8 +84,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $blog=Blog::find($id);
-        return view('Dashbord.blog.update',compact('blog'));
+        $User=User::find($id);
+        return view('Dashbord.User.update',compact('User'));
     }
 
     /**
@@ -85,44 +97,34 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $blog=Blog::find($id);
+        $User=User::find($id);
 
       
-        
-
-
         if($request->img == '' || $request->img== null)
         {
-           $img=$blog->img;
+           $img=$User->img;
 
         }
         else{
 
             $img=time(). '.' .$request->img->extension();
-            $request->img->move(public_path('BLog'),$img);
+            $request->img->move(public_path('User'),$img);
 
-        $imgpath=public_path('Blog/'.$img);
+        $imgpath=public_path('User/'.$img);
            
             unlink( $imgpath );
 
 
         }
+        $User->update([
 
-
-
-
-
-
-
-        $blog->update([
-
-            'title'=>$request['title'],
-            'content'=>$request['content'],
+            'name'=>$request['name'],
+            'email'=>$request['email'],
             'img'=>$img,
-            'link'=>$request['link'],
+            'password'=>$request['password'],
 
         ]);
-        return redirect()->route('blog.index')->with('success','تم تعديل المقال بنجاح');
+        return redirect()->route('user.index')->with('success','تم تعديل العضو بنجاح');
 
 
     }
@@ -135,8 +137,8 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $blog=Blog::find($id);
-        $blog->delete();
-        return redirect()->route('blog.index')->with('success','تم حذف المقال بنجاح');
+        $User=User::find($id);
+        $User->delete();
+        return redirect()->route('user.index')->with('success','تم حذف العضو بنجاح');
     }
 }

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Blog;
+use App\Models\Video;
 
-class BlogController extends Controller
+class VideosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs=Blog::get();
-        return view('Dashbord.blog.index',compact('blogs'));
+        $videos=Video::get();
+        return view('Dashbord.videos.index',compact('videos'));
     }
 
     /**
@@ -26,7 +26,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('Dashbord.blog.create');
+        return view('Dashbord.videos.create');
     }
 
     /**
@@ -40,16 +40,16 @@ class BlogController extends Controller
         if($request->img)
         {
            $img=time(). '.' .$request->img->extension();
-           $request->img->move(public_path('BLog'),$img);
+           $request->img->move(public_path('videos'),$img);
         }
         
-        $games=Blog::create([
+        $videos=Video::create([
             'title'=>$request['title'],
-            'content'=>$request['content'],
+             
             'img'=>$img,
             'link'=>$request['link'],
          ]);
-        return redirect()->route('blog.index')->with('success','تم اضافه المقال بنجاح');
+        return redirect()->route('video.index')->with('success','تم اضافه الفديو بنجاح');
     }
 
     /**
@@ -60,8 +60,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $blog=Blog::find($id);
-        return view('Dashbord.blog.show',compact('blog'));
+        $video=Video::find($id);
+        return view('Dashbord.videos.show',compact('video'));
     }
 
     /**
@@ -72,8 +72,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $blog=Blog::find($id);
-        return view('Dashbord.blog.update',compact('blog'));
+        $video=Video::find($id);
+        return view('Dashbord.videos.update',compact('video'));
     }
 
     /**
@@ -85,44 +85,28 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $blog=Blog::find($id);
-
-      
-        
-
+        $video=Video::find($id);
 
         if($request->img == '' || $request->img== null)
         {
-           $img=$blog->img;
+           $img=$video->img;
 
         }
         else{
 
             $img=time(). '.' .$request->img->extension();
-            $request->img->move(public_path('BLog'),$img);
-
-        $imgpath=public_path('Blog/'.$img);
-           
-            unlink( $imgpath );
-
+            $request->img->move(public_path('videos'),$img);
 
         }
 
-
-
-
-
-
-
-        $blog->update([
+        $video->update([
 
             'title'=>$request['title'],
-            'content'=>$request['content'],
-            'img'=>$img,
+             'img'=>$img,
             'link'=>$request['link'],
 
         ]);
-        return redirect()->route('blog.index')->with('success','تم تعديل المقال بنجاح');
+        return redirect()->route('video.index')->with('success','تم تعديل الفديو بنجاح');
 
 
     }
@@ -135,8 +119,8 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $blog=Blog::find($id);
-        $blog->delete();
-        return redirect()->route('blog.index')->with('success','تم حذف المقال بنجاح');
+        $video=Video::find($id);
+        $video->delete();
+        return redirect()->route('video.index')->with('success','تم حذف الفديو بنجاح');
     }
 }

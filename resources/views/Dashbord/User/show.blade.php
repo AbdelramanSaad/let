@@ -6,31 +6,36 @@
 
 العنوان :
 <br>
-{{ $video->title }}
+{{ $user->name }}
 <hr>
      </div>
 
      
- 
-<div class="col-sm-12">
-
-الصوره :
+     <div class="col-lg-12 col-sm-12" >
+ الاميل :
 <br>
-<img src="{{ asset('videos/'.$video->img) }}" alt="" style="height:250px;width:250px">
+{{ $user->email }}
 <hr>
 </div>
 <div class="col-sm-12">
 
-اللينك :
+الصوره :
 <br>
-{{ $video->link }}
+<img src="{{ asset('User/'.$user->img) }}" alt="" style="height:250px;width:250px">
+<hr>
+</div>
+<div class="col-sm-12">
+
+البسورد :
+<br>
+{{ $user->password }}
 <hr>
 </div>
 <div class="col-sm-12">
 
 وقت العرض :
 <br>
-{{ $video->created_at }}
+{{ $user->created_at }}
 <hr>
  
 </div>

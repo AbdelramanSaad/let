@@ -50,14 +50,60 @@
           <p> اضافه مقال جديد</p>
         </a>
       </li>
-      <li class="nav-item">
-        <a href="./index3.html" class="nav-link">
-          <i class="far fa-home nav-icon"></i>
-          <p> تعديل المقال</p>
-        </a>
-      </li>
+ 
     </ul>
   </li>
 
 
+  <li class="nav-item menu-open">
+    <a href="#" class="nav-link active">
+      <i class="fa-solid fa-video"></i>   
+         <p>
+الفديوهات  
+      <i class="right fas fa-angle-left"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="{{ URL('admin/video') }}" class="nav-link active">
+          <i class="far fa-circle nav-icon"></i>
+          <p>  كل الفديوهات </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ URL('admin/video/create') }}" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> اضافه فديو جديد</p>
+        </a>
+      </li>
+ 
+    </ul>
+  </li>
+
+  <li class="nav-item menu-open">
+    <a href="#" class="nav-link active">
+      <i class="fa-solid fa-user"></i>   
+         <p>
+الاعضاء  
+      <i class="right fas fa-angle-left"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="{{ URL('admin/user') }}" class="nav-link active">
+          <i class="far fa-circle nav-icon"></i>
+          <p>  كل الاعضاء </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ URL('admin/user/create') }}" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> اضافه عضو جديد</p>
+        </a>
+      </li>
+ 
+    </ul>
+  </li>
+
+    
     

@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;  
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\VideosController;
+use App\Http\Controllers\Admin\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +23,8 @@ use App\Http\Controllers\Admin\BlogController;
 
 
 Route::resource('blog', BlogController::class);
+Route::resource('video', VideosController::class);
+Route::resource('user', UserController::class);
 
 
 Auth::routes();

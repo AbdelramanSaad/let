@@ -26,12 +26,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12 col">
                         <div class="blog-wrap mb-30">
                             <div class="blog-img">
-                                 {{-- @php
-                                    $name_img = $blog->img;
-                                    $name_img_res = Str::between($name_img, ':"', '","');
-                                    $res_date = Str::between($name_img_res, '\\' , '\\' );
-                                    $res_name_last = Str::afterLast($name_img_res, '\\');
-                                @endphp --}}
+                           
                                 <img src="{{ asset('BLog/'.$blog->img) }}" alt="ali" />
                             </div>
                             <div class="blog-content wow fadeInUp">
@@ -53,8 +48,8 @@
                     </div>
                     @endforeach
             </div>
-            {{-- <div class="paginate mt-5 mx-auto">
-                {{ $blogs->link }}
+            <div class="paginate mt-5 mx-auto">
+               
             </div>
             <div class="blog">
                 <div class="container ">
@@ -65,10 +60,10 @@
                     <div class="owl-carousel blog-carousel">
                         @foreach ($videos as $video)
                             <div class="blog-item blog-wrap m-3">
-                                <button type="button" class="video-btn" data-toggle="modal" data-src="{{ $video->linke }}"
+                                <button type="button" class="video-btn" data-toggle="modal" data-src="{{ $video->link }}"
                                     data-target="#myModal">
                                     <div class="blog-img">
-                                        <img src="https://i3.ytimg.com/vi/lQKi1Z4kyGA/hqdefault.jpg" alt="Blog">
+  <img src="{{ asset('videos/'.$video->img) }}" alt="Blog" width="400px" height="400px">
                                 </button>
                                 <div class="blog-content">
                                     <h2 class="blog-title">{{ $video->title }}</h2>
@@ -97,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>
