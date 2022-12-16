@@ -47,10 +47,14 @@
                         </div>
                     </div>
                     @endforeach
-            </div>
-            <div class="paginate mt-5 mx-auto">
+
+                            <div class="paginate mt-5 m-auto">
+                    {{ $blogs->links() }}
                
             </div>
+            </div>
+            
+        
             <div class="blog">
                 <div class="container ">
                     <div class="section-header">

@@ -27,31 +27,29 @@ Route::get('index',function(){
 Route::get('/',[FrontController::class,'index'])->name('home');
 Route::get('blog',[FrontController::class,'Blog'])->name('blog');
 Route::get('show_blog/{id}',[FrontController::class,'show_blog'])->name('show_blog');
+Route::get('team_show/{id}',[FrontController::class,'team_show'])->name('team_show');
 
 
 
 
-
-
+ 
 // ///////////////////////////////FRONT HOME////////////////////////////////////
 
 
+Route::get('/register',function(){
 
-
-
-
-
-
-
-
-
-
-
-Route::get('rtl', function () {
-    return view('Dashbord.index2');
+    return "kjhkl";
 });
 
-Route::view('admin', 'Dashbord.index');
+
+
+
+
+
+
+ 
+
+ 
 
 Auth::routes();
 

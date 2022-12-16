@@ -1,5 +1,8 @@
 @extends('Dashbord.layout.master')
-
+@section('name')
+المقالات 
+<i class="fa-solid fa-book-medical"></i>
+@endsection
 @section('content')
 
      <div class="col-sm-12">

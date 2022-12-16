@@ -1,4 +1,8 @@
 @extends('Dashbord.layout.master')
+@section('name')
+  الفديوهات  
+<i class="fa-solid fa-video"></i>
+@endsection
 @section('content')
 
 @if(session()->has('success')) 
@@ -59,10 +63,15 @@
                      </td>
          
          </tr>
+         <div class="paginate mt-5 m-auto">
+      
+    </div>
          @endforeach
       
        </tbody>
      </table>
+
+  
    </div>
 
 

@@ -1,4 +1,8 @@
 @extends('Dashbord.layout.master')
+@section('name')
+المقالات 
+<i class="fa-solid fa-book-medical"></i>
+@endsection
 @section('content')
 
 
@@ -12,7 +16,9 @@
 
         <div class="form-outline mb-4">
             <label class="form-label" for="form6Example7"> المحتوي</label>
-            <textarea class="form-control" id="form6Example7" rows="4" name="content" required></textarea>
+            <textarea class="form-control" id="form6Example7" rows="4" name="content" required>
+
+            </textarea>
         </div>
 
         <div class="form-group">

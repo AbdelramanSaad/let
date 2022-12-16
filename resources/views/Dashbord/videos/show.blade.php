@@ -1,4 +1,8 @@
 @extends('Dashbord.layout.master')
+@section('name')
+  الفديوهات  
+<i class="fa-solid fa-video"></i>
+@endsection
 
 @section('content')
 

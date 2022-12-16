@@ -1,4 +1,8 @@
 @extends('Dashbord.layout.master')
+@section('name')
+ ادامن الموقع 
+<i class="fa-solid fa-user"></i>
+@endsection
 @section('content')
 
 @if(session()->has('success')) 
@@ -65,6 +69,10 @@
       
        </tbody>
      </table>
+     <div class="paginate mt-5 m-auto">
+      
+ 
+</div>
    </div>
 
 

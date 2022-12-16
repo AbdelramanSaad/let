@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs=Blog::get();
+        $blogs=Blog::paginate(2);
         return view('Dashbord.blog.index',compact('blogs'));
     }
 
@@ -101,9 +101,7 @@ class BlogController extends Controller
             $img=time(). '.' .$request->img->extension();
             $request->img->move(public_path('BLog'),$img);
 
-        $imgpath=public_path('Blog/'.$img);
-           
-            unlink( $imgpath );
+         
 
 
         }

@@ -1,4 +1,8 @@
 @extends('Dashbord.layout.master')
+@section('name')
+ ادامن الموقع 
+<i class="fa-solid fa-user"></i>
+@endsection
 
 @section('content')
 

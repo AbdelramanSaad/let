@@ -1,4 +1,8 @@
 @extends('Dashbord.layout.master')
+@section('name')
+ ادامن الموقع 
+<i class="fa-solid fa-user"></i>
+@endsection
 @section('content')
 
 @if (count($errors) > 0)
@@ -37,8 +41,8 @@
     </div>
 
     <div class="form-group">
-      <label for="confirm">كلمه المرور</label>
-      <input type="password" class="form-control" id="confirmed" name="confirm" required>
+      <label for="password_confirmation">كلمه المرور</label>
+      <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
   </div>
 
         <div class="form-group">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -42,8 +44,7 @@ class UserController extends Controller
 
     $validated = $request->validate([
             'email'=>'unique:users',
-            
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|same:password_confirmation|min:6',
 
         ]);
 
@@ -58,7 +59,7 @@ class UserController extends Controller
             'name'=>$request['name'],
             'email'=>$request['email'],
             'img'=>$img,
-            'password'=>$request['password'],
+            'password'=>Hash::make($request['password']),
          ]);
          
         return redirect()->route('user.index')->with('success','تم اضافه العضو بنجاح');
@@ -99,7 +100,6 @@ class UserController extends Controller
     {
         $User=User::find($id);
 
-      
         if($request->img == '' || $request->img== null)
         {
            $img=$User->img;
@@ -109,12 +109,7 @@ class UserController extends Controller
 
             $img=time(). '.' .$request->img->extension();
             $request->img->move(public_path('User'),$img);
-
-        $imgpath=public_path('User/'.$img);
-           
-            unlink( $imgpath );
-
-
+ 
         }
         $User->update([
 

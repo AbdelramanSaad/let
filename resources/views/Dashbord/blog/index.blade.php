@@ -1,4 +1,8 @@
 @extends('Dashbord.layout.master')
+@section('name')
+المقالات 
+<i class="fa-solid fa-book-medical"></i>
+@endsection
 @section('content')
 
 @if(session()->has('success')) 
@@ -62,11 +66,16 @@
                      </td>
          
          </tr>
+ 
          @endforeach
-          
-      
+ 
        </tbody>
      </table>
+     <div class="paginate mt-5 m-auto">
+      {{ $blogs->links() }}
+ 
+</div>
+  
    </div>
 
 

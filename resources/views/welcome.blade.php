@@ -349,13 +349,13 @@
             <h2>فريق العمل</h2>
         </div>
         <div class="row">
-            {{-- @foreach ($teams as $team )
+            @foreach ($teams as $team )
             <div class="col-lg-3 col-md-6">
                 <div class="team-item">
                     <div class="team-img">
 
                   
-                      <img src={{ asset('app/'.$team->img) }} alt="Image" width="100px" height="180px" style="object-fit: contain">
+                      <img src={{ asset('Team/'.$team->img) }} alt="Image" width="100px" height="180px" style="object-fit: contain">
                       @php
                          
 
@@ -370,7 +370,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach --}}
+            @endforeach
 
         </div>
     </div>
@@ -389,7 +389,7 @@
             <div class="blog-item">
                 <div class="blog-img">
                 
-                     <img src="{{ asset('BLog/'.$post->img) }}" alt="ali" />
+                     <img src="{{ asset('BLog/'.$post->img) }}" alt="ali" width="100%" height=450px/>
                 </div>
                 <div class="blog-content">
                     <h2 class="blog-title">{{ $post->title }}</h2>
